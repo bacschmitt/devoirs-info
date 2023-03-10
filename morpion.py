@@ -45,15 +45,16 @@ def gui():
     printTable(tbl, range(n))
 
 def logic(t): # Logique pour qui gagne
-    global win; win = False
+    global win
+    win = False
     
     # Lignes droites
 
-    for i in range(n): # Lignes horizontales
+    for i in range(n): # Lignes verticales
         if t[i].count(activePlayer) >= n:
             win = True
 
-    for i in range(n): # Lignes verticales
+    for i in range(n): # Lignes horizontales
         temp = []
         for j in range(n):
             temp.append(t[j][i])
@@ -62,16 +63,16 @@ def logic(t): # Logique pour qui gagne
 
     # Lignes diagonales
 
-    temp = [] # Diagonal du gauche en haut a la droite en bas
+    temp2 = [] # Diagonal du gauche en haut a la droite en bas
     for i in range(n):
-        temp.append(t[i][i])
-    if temp.count(activePlayer) >= n:
+        temp2.append(t[i][i])
+    if temp2.count(activePlayer) >= n:
         win = True
 
-    temp = [] # Diagonal du gauche en bas a la droite en haut
+    temp3 = [] # Diagonal du gauche en bas a la droite en haut
     for i in range(n):
-        temp.append(t[i][(n-1)-i])
-    if temp.count(activePlayer) >= n:
+        temp3.append(t[i][(n-1)-i])
+    if temp3.count(activePlayer) >= n:
         win = True
 
 def end():
@@ -96,5 +97,4 @@ def main():
             break
     end()
 
-# Fonction Pricipale
-main()
+main() # Fonction Pricipale
